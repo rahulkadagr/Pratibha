@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pratibha Jain | Financial Analyst &amp; Corporate Finance</title>
+<meta name="description" content="Pratibha Jain — Financial Analyst specializing in financial modelling, corporate financial analysis, and valuation.">
+<meta name="author" content="Pratibha Jain">
+<meta name="keywords" content="Financial Analyst, Corporate Finance, Financial Modelling, Valuation, Quantitative Finance">
+<meta property="og:title" content="Pratibha Jain | Financial Analyst & Corporate Finance">
+<meta property="og:description" content="Financial modelling, corporate financial analysis, and valuation portfolio.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<style>
+  :root{
+    --navy-950:#0a1420;
+    --navy-900:#0e1c2e;
+    --navy-800:#152840;
+    --navy-700:#1e3552;
+    --ledger:#2a4058;
+    --ivory:#f4f1e9;
+    --ivory-dim:#c9cabb;
+    --gold:#b98a3d;
+    --gold-soft:#d9b877;
+    --green-tick:#5f8f6f;
+    --red-tick:#a85c4d;
+    --serif:'Times New Roman', Times, serif;
+    --sans:'Times New Roman', Times, serif;
+    --mono:'Times New Roman', Times, serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth; font-size:17px;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;} }
+  body{
+    background:var(--navy-950);
+    color:var(--ivory);
+    font-family:var(--sans);
+    font-size:1.05rem;
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1100px; margin:0 auto; padding:0 32px;}
+  ::selection{background:var(--gold); color:var(--navy-950);}
+
+  /* Ledger-line background texture */
+  .ledger-bg{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:repeating-linear-gradient(to bottom, transparent 0 47px, rgba(201,202,187,0.05) 47px 48px);
+    opacity:0.6;
+  }
+
+  /* NAV */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(10,20,32,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(201,202,187,0.1);
+  }
+  .nav-inner{max-width:1100px; margin:0 auto; padding:0 32px; display:flex; align-items:center; justify-content:space-between; height:64px;}
+  .nav-mark{font-family:var(--serif); font-weight:700; font-size:1.3rem; letter-spacing:0.02em; color:var(--ivory);}
+  .nav-mark span{color:var(--gold-soft);}
+  .nav-links{display:flex; gap:28px; font-size:0.95rem; letter-spacing:0.01em;}
+  .nav-links a{color:var(--ivory-dim); position:relative; padding:4px 0; transition:color 0.2s;}
+  .nav-links a:hover, .nav-links a.active{color:var(--gold-soft);}
+  .nav-links a.active::after{content:''; position:absolute; left:0; right:0; bottom:-4px; height:1px; background:var(--gold-soft);}
+  .nav-toggle{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:8px;}
+  .nav-toggle span{width:22px; height:2px; background:var(--ivory);}
+  .mobile-menu{display:none; position:fixed; top:64px; left:0; right:0; background:var(--navy-900); border-bottom:1px solid rgba(201,202,187,0.1); z-index:99; flex-direction:column; padding:16px 32px;}
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{padding:12px 0; border-bottom:1px solid rgba(201,202,187,0.07); color:var(--ivory-dim); font-size:0.95rem;}
+
+  @media (max-width:820px){
+    .nav-links{display:none;}
+    .nav-toggle{display:flex;}
+  }
+
+  section{position:relative; z-index:1; padding:100px 0; border-bottom:1px solid rgba(201,202,187,0.08);}
+  .eyebrow{font-family:var(--sans); font-weight:700; font-size:0.85rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold-soft); margin-bottom:14px; display:flex; align-items:center; gap:10px;}
+  .eyebrow::before{content:''; width:24px; height:1px; background:var(--gold-soft);}
+  h2.section-title{font-family:var(--serif); font-weight:700; font-size:clamp(2rem,3.2vw,2.8rem); color:var(--ivory); margin-bottom:44px; max-width:640px;}
+
+  /* HERO */
+  .hero{padding:180px 0 120px; border-bottom:1px solid rgba(201,202,187,0.08); position:relative;}
+  .hero-grid{display:grid; grid-template-columns:1.3fr 0.9fr; gap:60px; align-items:center;}
+  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr;} }
+  .hero-eyebrow{font-family:var(--mono); font-size:0.8rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold-soft); margin-bottom:22px;}
+  .hero h1{font-family:var(--serif); font-weight:700; font-size:clamp(2.8rem,6vw,4.6rem); line-height:1.1; color:var(--ivory); margin-bottom:20px;}
+  .hero h1 em{font-style:italic; color:var(--gold-soft); font-weight:400;}
+  .hero-role{font-family:var(--sans); font-size:1.15rem; color:var(--ivory-dim); margin-bottom:24px; letter-spacing:0.01em;}
+  .hero-role .sep{color:var(--gold);}
+  .hero-desc{font-size:1.15rem; color:var(--ivory-dim); max-width:560px; margin-bottom:36px;}
+  .hero-loc{font-size:0.85rem; color:var(--ivory-dim); margin-bottom:36px; font-family:var(--mono);}
+  .cta-row{display:flex; flex-wrap:wrap; gap:14px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:13px 26px; font-size:1rem; letter-spacing:0.01em; font-weight:700;
+    border-radius:2px; transition:all 0.2s; border:1px solid transparent; cursor:pointer;
+  }
+  .btn-primary{background:var(--gold); color:var(--navy-950);}
+  .btn-primary:hover{background:var(--gold-soft);}
+  .btn-outline{border-color:rgba(201,202,187,0.3); color:var(--ivory);}
+  .btn-outline:hover{border-color:var(--gold-soft); color:var(--gold-soft);}
+
+  /* signature: DCF discount curve svg */
+  .hero-visual{position:relative;}
+  .curve-card{
+    background:var(--navy-900); border:1px solid var(--ledger); border-radius:3px; padding:28px;
+  }
+  .curve-label{font-family:var(--mono); font-size:0.72rem; color:var(--ivory-dim); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:4px;}
+  .curve-value{font-family:var(--serif); font-size:1.6rem; color:var(--gold-soft); margin-bottom:18px;}
+  .curve-note{font-family:var(--mono); font-size:0.68rem; color:var(--ivory-dim); opacity:0.6; margin-top:14px;}
+
+  /* ABOUT */
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px;}
+  @media (max-width:820px){ .about-grid{grid-template-columns:1fr;} }
+  .about-text p{color:var(--ivory-dim); margin-bottom:18px; font-size:1.08rem;}
+  .about-text strong{color:var(--ivory); font-weight:600;}
+  .stat-strip{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(201,202,187,0.12); border:1px solid rgba(201,202,187,0.12);}
+  .stat-box{background:var(--navy-900); padding:26px 22px;}
+  .stat-num{font-family:var(--serif); font-size:1.9rem; color:var(--gold-soft);}
+  .stat-lbl{font-family:var(--mono); font-size:0.72rem; color:var(--ivory-dim); text-transform:uppercase; letter-spacing:0.08em; margin-top:4px;}
+
+  /* FOCUS CARDS */
+  .focus-row{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(201,202,187,0.12); border:1px solid rgba(201,202,187,0.12);}
+  @media (max-width:820px){ .focus-row{grid-template-columns:1fr;} }
+  .focus-card{background:var(--navy-900); padding:32px 28px; transition:background 0.2s;}
+  .focus-card:hover{background:var(--navy-800);}
+  .focus-num{font-family:var(--mono); font-size:0.75rem; color:var(--gold); margin-bottom:14px;}
+  .focus-card h3{font-family:var(--serif); font-size:1.4rem; color:var(--ivory); margin-bottom:10px; font-weight:700;}
+  .focus-card p{color:var(--ivory-dim); font-size:1rem;}
+
+  /* EDUCATION timeline */
+  .edu-item{display:grid; grid-template-columns:160px 1fr; gap:28px; padding:26px 0; border-top:1px solid rgba(201,202,187,0.1);}
+  .edu-item:last-child{border-bottom:1px solid rgba(201,202,187,0.1);}
+  @media (max-width:640px){ .edu-item{grid-template-columns:1fr; gap:8px;} }
+  .edu-dates{font-family:var(--mono); font-size:0.78rem; color:var(--gold-soft);}
+  .edu-inst{font-family:var(--serif); font-size:1.3rem; font-weight:700; color:var(--ivory); margin-bottom:4px;}
+  .edu-deg{color:var(--ivory-dim); font-size:1rem; margin-bottom:8px;}
+  .edu-score{display:inline-block; font-family:var(--mono); font-size:0.75rem; color:var(--navy-950); background:var(--gold-soft); padding:2px 9px; border-radius:2px;}
+
+  /* EXPERIENCE */
+  .exp-card{background:var(--navy-900); border:1px solid var(--ledger); border-radius:3px; padding:34px; margin-bottom:20px;}
+  .exp-head{display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:10px; margin-bottom:20px; padding-bottom:18px; border-bottom:1px solid rgba(201,202,187,0.12);}
+  .exp-role{font-family:var(--serif); font-size:1.5rem; font-weight:700; color:var(--ivory);}
+  .exp-org{color:var(--gold-soft); font-size:0.95rem; margin-top:4px;}
+  .exp-meta{font-family:var(--mono); font-size:0.78rem; color:var(--ivory-dim); text-align:right;}
+  .exp-bullets{list-style:none;}
+  .exp-bullets li{position:relative; padding-left:22px; margin-bottom:14px; color:var(--ivory-dim); font-size:1.05rem;}
+  .exp-bullets li::before{content:'—'; position:absolute; left:0; color:var(--gold);}
+  .exp-bullets strong{color:var(--ivory); font-weight:600;}
+
+  /* PROJECTS */
+  .proj-filter{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:32px;}
+  .filter-btn{font-family:var(--mono); font-size:0.75rem; letter-spacing:0.04em; padding:8px 16px; border:1px solid rgba(201,202,187,0.25); border-radius:2px; background:transparent; color:var(--ivory-dim); cursor:pointer; transition:all 0.2s;}
+  .filter-btn:hover{border-color:var(--gold-soft); color:var(--gold-soft);}
+  .filter-btn.active{background:var(--gold); border-color:var(--gold); color:var(--navy-950);}
+  .proj-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
+  @media (max-width:820px){ .proj-grid{grid-template-columns:1fr;} }
+  .proj-card{background:var(--navy-900); border:1px solid var(--ledger); border-radius:3px; padding:28px; cursor:pointer; transition:border-color 0.2s;}
+  .proj-card:hover{border-color:var(--gold-soft);}
+  .proj-tag{font-family:var(--mono); font-size:0.68rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--gold-soft); margin-bottom:12px;}
+  .proj-title{font-family:var(--serif); font-size:1.35rem; font-weight:700; color:var(--ivory); margin-bottom:6px;}
+  .proj-date{font-family:var(--mono); font-size:0.72rem; color:var(--ivory-dim); opacity:0.7; margin-bottom:14px;}
+  .proj-summary{color:var(--ivory-dim); font-size:1rem; margin-bottom:14px;}
+  .proj-details{display:none; margin-top:16px; padding-top:16px; border-top:1px solid rgba(201,202,187,0.12);}
+  .proj-card.expanded .proj-details{display:block;}
+  .proj-details ul{list-style:none;}
+  .proj-details li{position:relative; padding-left:18px; margin-bottom:10px; color:var(--ivory-dim); font-size:1rem;}
+  .proj-details li::before{content:'·'; position:absolute; left:2px; color:var(--gold);}
+  .proj-expand{font-family:var(--mono); font-size:0.72rem; color:var(--gold-soft); display:flex; align-items:center; gap:6px;}
+  .proj-expand .chev{transition:transform 0.2s;}
+  .proj-card.expanded .chev{transform:rotate(180deg);}
+  .proj-actions{display:flex; align-items:center; justify-content:space-between; margin-top:16px; padding-top:16px; border-top:1px solid rgba(201,202,187,0.12);}
+  .proj-view{font-family:var(--sans); font-weight:700; font-size:0.85rem; color:var(--navy-950); background:var(--gold-soft); padding:8px 16px; border-radius:2px; transition:background 0.2s;}
+  .proj-view:hover{background:var(--gold);}
+  .proj-view.disabled{background:transparent; color:var(--ivory-dim); border:1px solid rgba(201,202,187,0.25); cursor:default; opacity:0.7;}
+  .highlight-figure{color:var(--gold-soft); font-weight:600; font-family:var(--mono);}
+
+  /* SKILLS dashboard */
+  .skills-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(201,202,187,0.12); border:1px solid rgba(201,202,187,0.12);}
+  @media (max-width:820px){ .skills-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:560px){ .skills-grid{grid-template-columns:1fr;} }
+  .skill-cat{background:var(--navy-900); padding:26px;}
+  .skill-cat h4{font-family:var(--mono); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--gold-soft); margin-bottom:16px;}
+  .skill-chip-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .skill-chip{font-size:0.95rem; color:var(--ivory-dim); border:1px solid rgba(201,202,187,0.2); padding:6px 12px; border-radius:2px;}
+
+  /* Certifications & POR */
+  .cert-list{display:flex; flex-direction:column; gap:1px; background:rgba(201,202,187,0.12); border:1px solid rgba(201,202,187,0.12);}
+  .cert-item{background:var(--navy-900); padding:24px 28px;}
+  .cert-top{display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px; margin-bottom:10px;}
+  .cert-title{font-family:var(--serif); font-size:1.2rem; font-weight:700; color:var(--ivory);}
+  .cert-issuer{font-family:var(--mono); font-size:0.75rem; color:var(--gold-soft);}
+  .cert-item ul{list-style:none;}
+  .cert-item li{position:relative; padding-left:18px; margin-bottom:6px; color:var(--ivory-dim); font-size:0.98rem;}
+  .cert-item li::before{content:'·'; position:absolute; left:2px; color:var(--gold);}
+
+  .por-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+  @media (max-width:820px){ .por-grid{grid-template-columns:1fr;} }
+  .por-card{background:var(--navy-900); border:1px solid var(--ledger); border-radius:3px; padding:24px;}
+  .por-role{font-family:var(--serif); font-size:1.15rem; font-weight:700; color:var(--ivory); margin-bottom:4px;}
+  .por-org{font-family:var(--mono); font-size:0.72rem; color:var(--gold-soft); margin-bottom:10px;}
+  .por-dates{font-family:var(--mono); font-size:0.7rem; color:var(--ivory-dim); opacity:0.7; margin-bottom:10px;}
+  .por-desc{color:var(--ivory-dim); font-size:0.98rem;}
+
+  /* WHAT I BRING */
+  .bring-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  @media (max-width:820px){ .bring-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:560px){ .bring-grid{grid-template-columns:1fr;} }
+  .bring-card{padding:26px 0;}
+  .bring-icon{font-family:var(--mono); font-size:0.75rem; color:var(--gold); margin-bottom:12px;}
+  .bring-card h4{font-family:var(--serif); font-size:1.2rem; color:var(--ivory); margin-bottom:8px; font-weight:700;}
+  .bring-card p{color:var(--ivory-dim); font-size:1rem;}
+
+  /* CONTACT */
+  .contact-section{border-bottom:none; text-align:center;}
+  .contact-inner{max-width:560px; margin:0 auto;}
+  .contact-links{display:flex; flex-direction:column; gap:14px; margin-top:36px;}
+  .contact-link{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:18px 22px; border:1px solid rgba(201,202,187,0.2); border-radius:2px; transition:border-color 0.2s;
+    font-size:1.05rem;
+  }
+  .contact-link:hover{border-color:var(--gold-soft);}
+  .contact-link .cl-label{font-family:var(--mono); font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--ivory-dim);}
+  .contact-link .cl-value{color:var(--ivory);}
+
+  footer{padding:44px 0; text-align:center;}
+  footer .f-name{font-family:var(--serif); font-size:1.25rem; font-weight:700; color:var(--ivory); margin-bottom:6px;}
+  footer .f-role{font-family:var(--mono); font-size:0.75rem; color:var(--gold-soft); margin-bottom:18px;}
+  footer .f-links{display:flex; gap:20px; justify-content:center; margin-bottom:18px; font-size:0.85rem; color:var(--ivory-dim);}
+  footer .f-links a:hover{color:var(--gold-soft);}
+  footer .f-copy{font-family:var(--mono); font-size:0.7rem; color:var(--ivory-dim); opacity:0.6;}
+
+  .back-top{
+    position:fixed; bottom:26px; right:26px; z-index:90;
+    width:44px; height:44px; border-radius:50%; background:var(--navy-800); border:1px solid var(--ledger);
+    color:var(--gold-soft); display:flex; align-items:center; justify-content:center; cursor:pointer;
+    opacity:0; pointer-events:none; transition:opacity 0.3s;
+    font-size:1.1rem;
+  }
+  .back-top.show{opacity:1; pointer-events:auto;}
+</style>
+</head>
+<body>
+
+<div class="ledger-bg"></div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-mark">PJ<span>.</span></div>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-eyebrow">Financial Analyst · PGDM Quantitative Finance, Narayana Business School</div>
+      <h1>Pratibha <em>Jain</em></h1>
+      <div class="hero-role">Financial Analysis <span class="sep">/</span> Corporate Finance <span class="sep">/</span> Financial Modelling</div>
+      <p class="hero-desc">A financial analyst in training, building the discipline to read a balance sheet and a business the way a corporate finance team does — through models, ratios, and the assumptions underneath them. Hands-on experience spans a ten-year financial model, forex-exposure analysis, and SAP-based financial operations from an internship at Coromandel International.</p>
+      <div class="hero-loc">Indore, India</div>
+      <div class="cta-row">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="assets/resume.pdf" download="Pratibha_Jain_Resume.pdf" class="btn btn-outline">Download Resume</a>
+        <a href="#contact" class="btn btn-outline">Contact Me</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="curve-card">
+        <div class="curve-label">JK Tyre &amp; Industries — Valuation Output</div>
+        <div class="curve-value">₹317.41 / share</div>
+        <svg viewBox="0 0 320 140" width="100%" height="140" aria-hidden="true">
+          <defs>
+            <linearGradient id="curveFill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#b98a3d" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="#b98a3d" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <g stroke="rgba(201,202,187,0.15)" stroke-width="1">
+            <line x1="0" y1="20" x2="320" y2="20"/>
+            <line x1="0" y1="55" x2="320" y2="55"/>
+            <line x1="0" y1="90" x2="320" y2="90"/>
+            <line x1="0" y1="125" x2="320" y2="125"/>
+          </g>
+          <polyline points="0,110 45,98 90,100 135,78 180,70 225,48 270,40 320,18" fill="none" stroke="#d9b877" stroke-width="2.5"/>
+          <polygon points="0,110 45,98 90,100 135,78 180,70 225,48 270,40 320,18 320,140 0,140" fill="url(#curveFill)"/>
+          <circle cx="320" cy="18" r="3.5" fill="#d9b877"/>
+        </svg>
+        <div class="curve-note">FCFF projection FY26E–FY30E · illustrative rendering of project output</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow">About</div>
+    <h2 class="section-title">From financial statements to business decisions</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Pratibha is currently pursuing a <strong>Post-Graduation Diploma in Quantitative Finance</strong> at Narayana Business School, following an Honours bachelor's degree at Shri Vaishnav Vidyapeeth Vishwavidhyalaya. Her academic and internship work sits at the intersection of <strong>financial analysis, corporate finance, and financial modelling</strong>.</p>
+        <p>As a <strong>Financial Analyst Intern at Coromandel International</strong>, she built a ten-year financial model, studied the effect of USD/INR volatility on margins and returns, and worked hands-on inside SAP FI/MM on vendor management, invoice verification, MIS reporting, and budgeting — direct exposure to how a corporate finance function actually runs.</p>
+        <p>Independently, she has completed a series of applied projects covering <strong>ratio analysis, DuPont and Altman Z-Score analysis, WACC and working capital assessment, and DCF valuation</strong> — consistently pairing Excel-based rigor with a clear business narrative.</p>
+      </div>
+      <div class="stat-strip">
+        <div class="stat-box"><div class="stat-num">5</div><div class="stat-lbl">Applied finance projects</div></div>
+        <div class="stat-box"><div class="stat-num">10-Yr</div><div class="stat-lbl">Financial model horizon</div></div>
+        <div class="stat-box"><div class="stat-num">₹317.41</div><div class="stat-lbl">DCF-derived intrinsic value / share</div></div>
+        <div class="stat-box"><div class="stat-num">3</div><div class="stat-lbl">Placement &amp; leadership roles</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAREER FOCUS -->
+<section id="focus">
+  <div class="wrap">
+    <div class="eyebrow">Career Focus</div>
+    <h2 class="section-title">Where the work is headed</h2>
+    <div class="focus-row">
+      <div class="focus-card">
+        <div class="focus-num">01</div>
+        <h3>Financial Analysis</h3>
+        <p>Ratio analysis, common-size and comparative statement analysis, DuPont decomposition, Altman Z-Score.</p>
+      </div>
+      <div class="focus-card">
+        <div class="focus-num">02</div>
+        <h3>Corporate Finance</h3>
+        <p>Financial modelling, forecasting, WACC and working capital assessment, forex-exposure and margin analysis.</p>
+      </div>
+      <div class="focus-card">
+        <div class="focus-num">03</div>
+        <h3>Valuation &amp; Quantitative Analytics</h3>
+        <p>DCF &amp; FCFF modelling, beta/correlation/regression analysis, Power BI dashboards.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div class="eyebrow">Professional Experience</div>
+    <h2 class="section-title">Internship</h2>
+    <div class="exp-card">
+      <div class="exp-head">
+        <div>
+          <div class="exp-role">Financial Analyst Intern</div>
+          <div class="exp-org">Coromandel International</div>
+        </div>
+        <div class="exp-meta">May 2026 – Jul 2026<br>Indore</div>
+      </div>
+      <ul class="exp-bullets">
+        <li><strong>Financial Modelling &amp; Analysis:</strong> Developed a financial model for Coromandel International Ltd. using historical financial statements, analyzing Revenue, EBITDA, Net Profit, profitability margins, and key financial ratios across a <span class="highlight-figure">10-year period</span>.</li>
+        <li><strong>Forex &amp; Financial Performance Analysis:</strong> Analyzed the impact of USD/INR exchange-rate volatility and forex exposure on Revenue, EBITDA Margin, Net Profit Margin, ROA, Current Ratio, and Debt-Equity Ratio.</li>
+        <li><strong>SAP &amp; Accounts Payable:</strong> Gained hands-on exposure to SAP FI/MM, including G/L and Cost Center processes, vendor management, Purchase Orders, Service Entry Sheets, invoice verification, and payment processing.</li>
+        <li><strong>MIS, Budgeting &amp; Financial Operations:</strong> Supported MIS reporting, GR/IR monitoring, vendor advances, credit balances, historical expense analysis, and G/L-wise budgeting to understand financial planning and operational decision-making.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="eyebrow">Selected Projects</div>
+    <h2 class="section-title">Applied financial analysis &amp; corporate finance work</h2>
+    <div class="proj-filter" id="projFilter">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="research">Financial Analysis</button>
+      <button class="filter-btn" data-filter="valuation">Valuation</button>
+      <button class="filter-btn" data-filter="quant">Quantitative</button>
+    </div>
+    <div class="proj-grid" id="projGrid">
+
+      <div class="proj-card" data-cat="research">
+        <div class="proj-tag">Financial Analysis · Ratio Analysis</div>
+        <div class="proj-title">Financial Statement Analysis: Rallis India Ltd. &amp; Privi Speciality Chemicals Ltd.</div>
+        <div class="proj-date">12 Apr 2026</div>
+        <p class="proj-summary">Comparative and common-size statement analysis with DuPont and Altman Z-Score to benchmark two chemical-sector peers.</p>
+        <div class="proj-expand">Read details <span class="chev">▾</span></div>
+        <div class="proj-details">
+          <ul>
+            <li>Evaluated financial performance, profitability, liquidity, and capital structure for both companies.</li>
+            <li>Performed comparative and common-size statement analysis alongside ratio analysis to assess trends and operational performance.</li>
+            <li>Applied DuPont Analysis and Altman Z-Score to evaluate shareholder returns, financial efficiency, and financial risk.</li>
+            <li>Compared the two companies using peer benchmarking to identify relative strengths, weaknesses, and investment insights.</li>
+          </ul>
+        </div>
+        <div class="proj-actions">
+          <a class="proj-view" href="assets/projects/project-financial-statement-analysis.pdf" target="_blank" rel="noopener">View Project ↗</a>
+        </div>
+      </div>
+
+      <div class="proj-card" data-cat="research">
+        <div class="proj-tag">Corporate Finance · WACC</div>
+        <div class="proj-title">Corporate Financial Analysis of Automobile Companies: Risk, WACC &amp; Working Capital Study</div>
+        <div class="proj-date">01 Oct 2025</div>
+        <p class="proj-summary">Evaluated automobile-sector risk-return profiles alongside WACC computation and working capital assessment.</p>
+        <div class="proj-expand">Read details <span class="chev">▾</span></div>
+        <div class="proj-details">
+          <ul>
+            <li>Acquired financial analysis skills in risk-return evaluation, WACC computation, and working capital assessment.</li>
+            <li>Developed practical insights into stock market risk by comparing company returns with benchmark indices.</li>
+            <li>Enhanced Excel proficiency for financial analysis, dashboard development, and data-driven decision-making.</li>
+          </ul>
+        </div>
+        <div class="proj-actions">
+          <span class="proj-view disabled">Project file coming soon</span>
+        </div>
+      </div>
+
+      <div class="proj-card" data-cat="valuation">
+        <div class="proj-tag">Valuation · DCF</div>
+        <div class="proj-title">DCF Valuation &amp; Industry Evaluation of JK Tyre &amp; Industries Ltd.</div>
+        <div class="proj-date">20 Apr 2026</div>
+        <p class="proj-summary">Built a full DCF model to derive intrinsic value, alongside DuPont-based profitability analysis across FY2021–FY2025.</p>
+        <div class="proj-expand">Read details <span class="chev">▾</span></div>
+        <div class="proj-details">
+          <ul>
+            <li>Conducted qualitative and quantitative analysis of industry dynamics, competitive positioning, and corporate strategy.</li>
+            <li>Performed DuPont analysis to assess profitability, asset efficiency, financial leverage, and ROE trends across FY2021–FY2025.</li>
+            <li>Built a DCF model using revenue growth, EBITDA margins, CAPEX, working capital, WACC, and terminal growth assumptions to forecast FCFF for FY2026E–FY2030E.</li>
+            <li>Calculated enterprise value, equity value, and intrinsic value per share via the Gordon Growth Model, deriving <span class="highlight-figure">₹317.41 per share</span>.</li>
+          </ul>
+        </div>
+        <div class="proj-actions">
+          <span class="proj-view disabled">Project file coming soon</span>
+        </div>
+      </div>
+
+      <div class="proj-card" data-cat="quant">
+        <div class="proj-tag">Quantitative · Dashboarding</div>
+        <div class="proj-title">Mutual Fund Dashboard Analysis &amp; Risk-Return Interpretation</div>
+        <div class="proj-date">29 Dec 2025</div>
+        <p class="proj-summary">Built an Excel dashboard comparing mutual fund performance, volatility, and key risk-return metrics.</p>
+        <div class="proj-expand">Read details <span class="chev">▾</span></div>
+        <div class="proj-details">
+          <ul>
+            <li>Analyzed risk and return across mutual funds, comparing performance, volatility, and fund-to-fund differences.</li>
+            <li>Gained practical experience creating dashboards in Excel to clearly show fund data, trends, and key metrics.</li>
+            <li>Developed a stronger grasp of investment evaluation by focusing on performance indicators and risk measures.</li>
+          </ul>
+        </div>
+        <div class="proj-actions">
+          <a class="proj-view" href="assets/projects/project-mutual-fund-dashboard.pdf" target="_blank" rel="noopener">View Project ↗</a>
+        </div>
+      </div>
+
+      <div class="proj-card" data-cat="quant">
+        <div class="proj-tag">Quantitative · Market Risk</div>
+        <div class="proj-title">Statistical Analysis of Automobile Companies Trading on the NSE</div>
+        <div class="proj-date">04 Jan 2026</div>
+        <p class="proj-summary">Applied beta, correlation, and regression to assess stock risk and sensitivity against a sector benchmark.</p>
+        <div class="proj-expand">Read details <span class="chev">▾</span></div>
+        <div class="proj-details">
+          <ul>
+            <li>Developed equity research skills by analyzing stock returns, volatility, and risk profiles using daily, monthly, and yearly data.</li>
+            <li>Assessed market risk and stock sensitivity using beta, correlation, and regression analysis against a sector benchmark.</li>
+            <li>Improved financial analysis and Excel skills by using statistical tools to generate investment insights and compare performance.</li>
+          </ul>
+        </div>
+        <div class="proj-actions">
+          <span class="proj-view disabled">Project file coming soon</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="eyebrow">Technical Skills</div>
+    <h2 class="section-title">Tools &amp; capabilities</h2>
+    <div class="skills-grid">
+      <div class="skill-cat">
+        <h4>Finance</h4>
+        <div class="skill-chip-row">
+          <span class="skill-chip">DCF &amp; FCFF Valuation</span>
+          <span class="skill-chip">Ratio Analysis</span>
+          <span class="skill-chip">DuPont Analysis</span>
+          <span class="skill-chip">Altman Z-Score</span>
+          <span class="skill-chip">WACC</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h4>Analytics</h4>
+        <div class="skill-chip-row">
+          <span class="skill-chip">Excel</span>
+          <span class="skill-chip">Power BI</span>
+          <span class="skill-chip">Office 365</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h4>Quantitative</h4>
+        <div class="skill-chip-row">
+          <span class="skill-chip">Regression Analysis</span>
+          <span class="skill-chip">Beta &amp; Correlation</span>
+          <span class="skill-chip">Risk-Return Analysis</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h4>Enterprise Systems</h4>
+        <div class="skill-chip-row">
+          <span class="skill-chip">SAP FI/MM</span>
+          <span class="skill-chip">MIS Reporting</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h4>Core</h4>
+        <div class="skill-chip-row">
+          <span class="skill-chip">Problem Solving</span>
+          <span class="skill-chip">Adaptability</span>
+          <span class="skill-chip">Collaboration</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h4>Languages</h4>
+        <div class="skill-chip-row">
+          <span class="skill-chip">English</span>
+          <span class="skill-chip">Hindi</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="wrap">
+    <div class="eyebrow">Education</div>
+    <h2 class="section-title">Academic background</h2>
+
+    <div class="edu-item">
+      <div class="edu-dates">Jul 2025 – Present</div>
+      <div>
+        <div class="edu-inst">Narayana Business School (AICTE)</div>
+        <div class="edu-deg">Post-Graduation Diploma in Quantitative Finance</div>
+        <span class="edu-score">Score: 7.39</span>
+      </div>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-dates">Jun 2021 – Jun 2024</div>
+      <div>
+        <div class="edu-inst">Shri Vaishnav Vidyapeeth Vishwavidhyalaya</div>
+        <div class="edu-deg">Bachelor's (Honours)</div>
+        <span class="edu-score">Score: 8.64</span>
+      </div>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-dates">May 2020 – Jun 2021</div>
+      <div>
+        <div class="edu-inst">Shri Cloth Market Vaishnav Bal Mandir, Indore (CBSE)</div>
+        <div class="edu-deg">12th — Commerce with Mathematics</div>
+        <span class="edu-score">Score: 8.93</span>
+      </div>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-dates">Apr 2018 – Jun 2019</div>
+      <div>
+        <div class="edu-inst">St. George English Medium School (CBSE)</div>
+        <div class="edu-deg">10th — General</div>
+        <span class="edu-score">Score: 8.04</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="wrap">
+    <div class="eyebrow">Certifications</div>
+    <h2 class="section-title">Applied coursework &amp; competitions</h2>
+    <div class="cert-list">
+      <div class="cert-item">
+        <div class="cert-top">
+          <div class="cert-title">Data Visualization with Power BI</div>
+          <div class="cert-issuer">GreatLearning</div>
+        </div>
+        <ul>
+          <li>Learned to import, clean, and prepare data in Power BI, including building basic data models and relationships.</li>
+          <li>Created visualizations, charts, and interactive dashboards to present insights clearly.</li>
+          <li>Applied data visualization and reporting skills to support informed business decision-making.</li>
+        </ul>
+      </div>
+      <div class="cert-item">
+        <div class="cert-top">
+          <div class="cert-title">Business Analysis and Project Management</div>
+          <div class="cert-issuer">Coursera</div>
+        </div>
+        <ul>
+          <li>Translated business problems into clear requirements and improved processes for better efficiency.</li>
+          <li>Analyzed workflows to identify gaps and delays using a data-driven approach.</li>
+          <li>Communicated insights effectively with stakeholders and presented practical solutions.</li>
+        </ul>
+      </div>
+      <div class="cert-item">
+        <div class="cert-top">
+          <div class="cert-title">National Level Union Budget Analysis Competition</div>
+          <div class="cert-issuer">Prestige Institute of Management and Research</div>
+        </div>
+        <ul>
+          <li>Analyzed the Government of India's Union Budget, focusing on fiscal policy, taxation reforms, and macroeconomic impact.</li>
+          <li>Presented insights on how budgetary decisions affect financial markets and economic growth.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP / ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="wrap">
+    <div class="eyebrow">Leadership &amp; Achievements</div>
+    <h2 class="section-title">Positions of responsibility &amp; recognition</h2>
+    <div class="por-grid">
+      <div class="por-card">
+        <div class="por-role">Placement Coordinator</div>
+        <div class="por-org">NBS</div>
+        <div class="por-dates">Sep 2025 – Present</div>
+        <p class="por-desc">Coordinating placement activities and industry outreach for the current cohort.</p>
+      </div>
+      <div class="por-card">
+        <div class="por-role">Placement Coordinator</div>
+        <div class="por-org">SVVV</div>
+        <div class="por-dates">Jun 2022 – Jun 2024</div>
+        <p class="por-desc">Supported placement coordination during undergraduate studies.</p>
+      </div>
+      <div class="por-card">
+        <div class="por-role">Prayatna Club</div>
+        <div class="por-org">SVVV</div>
+        <div class="por-dates">Aug 2022 – Jun 2024</div>
+        <p class="por-desc">Taught and mentored underprivileged students, supporting their academic learning and personal development through regular educational sessions.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:40px;" class="cert-list">
+      <div class="cert-item">
+        <div class="cert-top">
+          <div class="cert-title">How AI is Used in Traffic Management</div>
+          <div class="cert-issuer">Shri Vaishnav Vidyapeeth Vishwavidhyalaya</div>
+        </div>
+        <ul>
+          <li>Built a model on traffic management using AI, demonstrating how AI helps manage and improve traffic flow.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT I BRING -->
+<section id="bring">
+  <div class="wrap">
+    <div class="eyebrow">What I Bring</div>
+    <h2 class="section-title">Employer-facing strengths</h2>
+    <div class="bring-grid">
+      <div class="bring-card">
+        <div class="bring-icon">01</div>
+        <h4>Financial Analysis</h4>
+        <p>Ratio, common-size, and comparative statement analysis to assess profitability, liquidity, and risk.</p>
+      </div>
+      <div class="bring-card">
+        <div class="bring-icon">02</div>
+        <h4>Corporate Finance Modelling</h4>
+        <p>Ten-year historical modelling, forecasting, WACC and working capital assessment built from first principles.</p>
+      </div>
+      <div class="bring-card">
+        <div class="bring-icon">03</div>
+        <h4>Systems Fluency</h4>
+        <p>Hands-on SAP FI/MM exposure spanning vendor management, invoicing, and budgeting.</p>
+      </div>
+      <div class="bring-card">
+        <div class="bring-icon">04</div>
+        <h4>Valuation Judgment</h4>
+        <p>Comfortable moving from DCF assumptions to a defensible intrinsic value per share.</p>
+      </div>
+      <div class="bring-card">
+        <div class="bring-icon">05</div>
+        <h4>Communication</h4>
+        <p>Experience translating budgets and workflows into insights stakeholders can act on.</p>
+      </div>
+      <div class="bring-card">
+        <div class="bring-icon">06</div>
+        <h4>Leadership</h4>
+        <p>Placement coordination and mentoring roles held alongside a full academic course load.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="wrap contact-inner">
+    <div class="eyebrow" style="justify-content:center;">Contact</div>
+    <h2 class="section-title" style="margin:0 auto 8px; text-align:center;">Let's connect</h2>
+    <p style="color:var(--ivory-dim);">Open to Financial Analyst and Corporate Finance Analyst opportunities.</p>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:pratibha.pgdmqf25@nbs.edu.in">
+        <span class="cl-label">Email</span>
+        <span class="cl-value">pratibha.pgdmqf25@nbs.edu.in</span>
+      </a>
+      <a class="contact-link" href="tel:+917024982249">
+        <span class="cl-label">Phone</span>
+        <span class="cl-value">+91-7024982249</span>
+      </a>
+      <a class="contact-link" href="https://linkedin.com/in/pratibhajain123" target="_blank" rel="noopener">
+        <span class="cl-label">LinkedIn</span>
+        <span class="cl-value">in/pratibhajain123</span>
+      </a>
+      <a class="contact-link" href="assets/resume.pdf" download="Pratibha_Jain_Resume.pdf">
+        <span class="cl-label">Resume</span>
+        <span class="cl-value">Download PDF</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-name">Pratibha Jain</div>
+    <div class="f-role">Financial Analyst · Corporate Finance · Financial Modelling</div>
+    <div class="f-links">
+      <a href="https://linkedin.com/in/pratibhajain123" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:pratibha.pgdmqf25@nbs.edu.in">Email</a>
+    </div>
+    <div class="f-copy">© 2026 Pratibha Jain. All rights reserved.</div>
+  </div>
+</footer>
+
+<button class="back-top" id="backTop" aria-label="Back to top">↑</button>
+
+<script>
+  // Mobile menu
+  const navToggle = document.getElementById('navToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  navToggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+  // Active nav link on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navA = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      const rect = sec.getBoundingClientRect();
+      if (rect.top <= 120 && rect.bottom >= 120) current = sec.getAttribute('id');
+    });
+    navA.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+    document.getElementById('backTop').classList.toggle('show', window.scrollY > 600);
+  });
+
+  // Project filter
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projCards = document.querySelectorAll('.proj-card');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      projCards.forEach(card => {
+        card.style.display = (f === 'all' || card.dataset.cat === f) ? '' : 'none';
+      });
+    });
+  });
+
+  // Project expand
+  projCards.forEach(card => {
+    card.querySelector('.proj-expand').addEventListener('click', (e) => {
+      e.stopPropagation();
+      card.classList.toggle('expanded');
+    });
+  });
+
+  // Back to top
+  document.getElementById('backTop').addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+</script>
+
+</body>
+</html>
