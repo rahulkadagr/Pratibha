@@ -103,7 +103,12 @@
   .btn-outline:hover{border-color:var(--gold-soft); color:var(--gold-soft);}
 
   /* signature: DCF discount curve svg */
-  .hero-visual{position:relative;}
+  .hero-visual{position:relative; display:flex; flex-direction:column; gap:20px;}
+  .photo-frame{
+    border:1px solid var(--ledger); border-radius:3px; overflow:hidden; background:var(--navy-900);
+    aspect-ratio:4/5; max-height:380px;
+  }
+  .photo-frame img{width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(15%) contrast(1.03);}
   .curve-card{
     background:var(--navy-900); border:1px solid var(--ledger); border-radius:3px; padding:28px;
   }
@@ -292,26 +297,12 @@
       </div>
     </div>
     <div class="hero-visual">
+      <div class="photo-frame">
+        <img src="assets/photo.jpeg" alt="Pratibha Jain" loading="eager">
+      </div>
       <div class="curve-card">
         <div class="curve-label">JK Tyre &amp; Industries — Valuation Output</div>
         <div class="curve-value">₹317.41 / share</div>
-        <svg viewBox="0 0 320 140" width="100%" height="140" aria-hidden="true">
-          <defs>
-            <linearGradient id="curveFill" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#b98a3d" stop-opacity="0.35"/>
-              <stop offset="100%" stop-color="#b98a3d" stop-opacity="0"/>
-            </linearGradient>
-          </defs>
-          <g stroke="rgba(201,202,187,0.15)" stroke-width="1">
-            <line x1="0" y1="20" x2="320" y2="20"/>
-            <line x1="0" y1="55" x2="320" y2="55"/>
-            <line x1="0" y1="90" x2="320" y2="90"/>
-            <line x1="0" y1="125" x2="320" y2="125"/>
-          </g>
-          <polyline points="0,110 45,98 90,100 135,78 180,70 225,48 270,40 320,18" fill="none" stroke="#d9b877" stroke-width="2.5"/>
-          <polygon points="0,110 45,98 90,100 135,78 180,70 225,48 270,40 320,18 320,140 0,140" fill="url(#curveFill)"/>
-          <circle cx="320" cy="18" r="3.5" fill="#d9b877"/>
-        </svg>
         <div class="curve-note">FCFF projection FY26E–FY30E · illustrative rendering of project output</div>
       </div>
     </div>
@@ -433,7 +424,7 @@
           </ul>
         </div>
         <div class="proj-actions">
-          <span class="proj-view disabled">Project file coming soon</span>
+          <a class="proj-view" href="assets/projects/project-corporate-finance-automobile.xlsx" target="_blank" rel="noopener">View Project ↗ (Excel)</a>
         </div>
       </div>
 
@@ -452,7 +443,7 @@
           </ul>
         </div>
         <div class="proj-actions">
-          <span class="proj-view disabled">Project file coming soon</span>
+          <a class="proj-view" href="assets/projects/project-dcf-jk-tyre.pdf" target="_blank" rel="noopener">View Project ↗</a>
         </div>
       </div>
 
@@ -470,7 +461,7 @@
           </ul>
         </div>
         <div class="proj-actions">
-          <a class="proj-view" href="assets/projects/project-mutual-fund-dashboard.pdf" target="_blank" rel="noopener">View Project ↗</a>
+          <a class="proj-view" href="assets/projects/project-mutual-fund-dashboard.xlsx" target="_blank" rel="noopener">View Project ↗ (Excel)</a>
         </div>
       </div>
 
@@ -488,7 +479,7 @@
           </ul>
         </div>
         <div class="proj-actions">
-          <span class="proj-view disabled">Project file coming soon</span>
+          <a class="proj-view" href="assets/projects/project-statistical-analysis-nse.pdf" target="_blank" rel="noopener">View Project ↗</a>
         </div>
       </div>
 

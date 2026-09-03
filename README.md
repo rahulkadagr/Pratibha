@@ -7,10 +7,14 @@ This is a fully static site (HTML + CSS + JS) — no database or backend needed.
 portfolio/
 ├── index.html
 ├── assets/
+│   ├── photo.jpeg
 │   ├── resume.pdf
 │   └── projects/
 │       ├── project-financial-statement-analysis.pdf
-│       └── project-mutual-fund-dashboard.pdf
+│       ├── project-corporate-finance-automobile.xlsx
+│       ├── project-dcf-jk-tyre.pdf
+│       ├── project-mutual-fund-dashboard.xlsx
+│       └── project-statistical-analysis-nse.pdf
 ```
 
 ## Steps
@@ -21,16 +25,7 @@ portfolio/
 
 ## Behavior
 - **Resume**: the Download Resume buttons use `download="Pratibha_Jain_Resume.pdf"` — clicking them saves the file directly, no new tab.
-- **Projects**: each "View Project" button opens the file in a new tab (`target="_blank"`, no `download` attribute) so visitors can read it without a forced save dialog. Two projects are wired up now; the other three show "Project file coming soon" until you add their files.
+- **Projects**: each "View Project" opens the file in a new tab (`target="_blank"`, no `download` attribute) — no forced save dialog. PDFs render inline in the browser. The two Excel (`.xlsx`) projects will typically download instead of previewing, since browsers can't render Excel files inline — that's a browser limitation on a static site, not something the link controls. If you want those to open in-browser like the PDFs, they'd need converting to PDF (I can do this on request).
 
-## Adding the remaining project files
-For each remaining project (JK Tyre DCF, NSE automobile analysis, IT companies WACC study):
-1. If it's a Word/Excel file, convert it to PDF first — browsers can't preview `.xlsx`/`.docx` natively on a static site.
-2. Drop the PDF into `assets/projects/`.
-3. In `index.html`, find that project's card and replace:
-   `<span class="proj-view disabled">Project file coming soon</span>`
-   with:
-   `<a class="proj-view" href="assets/projects/your-file.pdf" target="_blank" rel="noopener">View Project ↗</a>`
-
-## Adding a photo
-Drop the photo into `assets/` (e.g. `assets/photo.jpg`) and it can be swapped in for the current initials mark in the hero section — send it over and I can wire that up.
+## Adding a different photo later
+Replace `assets/photo.jpeg` with a same-named file, or update the `src` in the hero section of `index.html` if you rename it.
